@@ -104,6 +104,7 @@ if __name__ == "__main__":
     
         if(number1 is None) or (number2 is None) or (func is None):
             print("Quitting.")
+            break
         else:
             print(func(number1,number2))
     
