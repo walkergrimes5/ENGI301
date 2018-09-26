@@ -51,6 +51,10 @@ Error conditions:
 
 --------------------------------------------------------------------------
 """
+# ------------------------------------------------------------------------
+# Libraries
+# ------------------------------------------------------------------------
+import operator
 
 # ------------------------------------------------------------------------
 # Constants
@@ -60,16 +64,47 @@ Error conditions:
 # ------------------------------------------------------------------------
 # Global variables
 # ------------------------------------------------------------------------
-
+operators = {
+    "+" : operator.add,
+    "-" : operator.sub,
+    "*" : operator.mul,
+    "/" : operator.truediv
+}
 
 # ------------------------------------------------------------------------
 # Functions
 # ------------------------------------------------------------------------
-
+def get_user_input():
+    try:
+        number1 = float(input("Enter the first number:  "))
+        number2 = float(input("Enter the second number: "))
+        op      = input("Enter an operator(Valid operators are +,-,*,/): ")
+        
+        return(number1, number2, op)
+        
+    except:
+        print("Invalid Input")
+        return(None, None, None)
+        
+   
 
 # ------------------------------------------------------------------------
 # Main script
 # ------------------------------------------------------------------------
 
 if __name__ == "__main__":
-  pass
+    while True:
+        
+        (number1, number2, op) = get_user_input()
+        print(number1)
+        print(number2)
+        print(op)
+
+        func = operators.get(op, None)
+    
+        if(number1 is None) or (number2 is None) or (func is None):
+            print("Quitting.")
+        else:
+            print(func(number1,number2))
+    
+    
