@@ -35,7 +35,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 --------------------------------
 
 This program will cause the USR3 LED on the PocketBeagle development
-board to blink at 5 hz
+board to blink at 5 hz indefinitely
 
 There are no inputs to this function, upon execution it will simply 
 blink the LED
