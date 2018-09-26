@@ -41,7 +41,7 @@ blink the LED
 
 """
 # ------------------------------------------------------------------------
-# Libraries
+# Libraries - import the required libraries
 # ------------------------------------------------------------------------
 import Adafruit_BBIO.GPIO as GPIO
 import time
@@ -67,8 +67,8 @@ import time
 if __name__ == "__main__":
     GPIO.setup("USR3d", GPIO.OUT)
     
-while True:
-    GPIO.output("USR3", GPIO.HIGH)
-    time.sleep(1/10)
-    GPIO.output("USR3", GPIO.LOW)
-    time.sleep(1/10)
+    while True:
+        GPIO.output("USR3", GPIO.HIGH)
+        time.sleep(1/10)
+        GPIO.output("USR3", GPIO.LOW)
+        time.sleep(1/10)
