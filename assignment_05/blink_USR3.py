@@ -66,7 +66,7 @@ import time
 # Main script
 # ------------------------------------------------------------------------
 if __name__ == "__main__":
-    GPIO.setup("USR3d", GPIO.OUT)
+    GPIO.setup("USR3", GPIO.OUT)
     
     while True:
         GPIO.output("USR3", GPIO.HIGH)
