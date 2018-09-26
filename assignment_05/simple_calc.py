@@ -4,7 +4,7 @@
 Simple Calculator
 --------------------------------------------------------------------------
 License:   
-Copyright 2018 <NAME>
+Copyright 2018 <Charles Walker Grimes>
 
 Redistribution and use in source and binary forms, with or without 
 modification, are permitted provided that the following conditions are met:
@@ -44,10 +44,20 @@ Operations:
   - subtraction
   - multiplication
   - division
+  - multiplication
+  - left bit shift
+  - right bit shift
+  - modulo
 
 Error conditions:
   - Invalid operator --> Program should exit
   - Invalid number   --> Program should exit
+  
+Note on shifts:
+    If either number is a float, the program will round the number to the
+    nearest integer before performing either a left or right shift
+    
+This program is compatible with both Python 2 and Python 3
 
 --------------------------------------------------------------------------
 """
@@ -55,20 +65,24 @@ Error conditions:
 # Libraries
 # ------------------------------------------------------------------------
 import operator
-
+import six
 # ------------------------------------------------------------------------
 # Constants
 # ------------------------------------------------------------------------
 
 
-# ------------------------------------------------------------------------
+# ------------------------------4.5------------------------------------------
 # Global variables
 # ------------------------------------------------------------------------
 operators = {
-    "+" : operator.add,
-    "-" : operator.sub,
-    "*" : operator.mul,
-    "/" : operator.truediv
+    "+"      : operator.add,
+    "-"      : operator.sub,
+    "*"      : operator.mul,
+    "/"      : operator.truediv,
+    "lshift" : operator.lshift,
+    "rshift" : operator.rshift,
+    "mod"    : operator.mod,
+    "^"      : operator.pow
 }
 
 # ------------------------------------------------------------------------
@@ -76,11 +90,11 @@ operators = {
 # ------------------------------------------------------------------------
 def get_user_input():
     try:
-        number1 = float(input("Enter the first number:  "))
-        number2 = float(input("Enter the second number: "))
-        op      = input("Enter an operator(Valid operators are +,-,*,/): ")
+        number1 = float(six.moves.input("Enter the first number:  "))
+        op      = six.moves.input("Enter an operator(Valid operators are +,-,*,/,^,lshift,rshift,mod): ")
+        number2 = float(six.moves.input("Enter the second number: "))
         
-        return(number1, number2, op)
+        return(number1, op, number2)
         
     except:
         print("Invalid Input")
@@ -95,16 +109,20 @@ def get_user_input():
 if __name__ == "__main__":
     while True:
         
-        (number1, number2, op) = get_user_input()
+        (number1, op, number2) = get_user_input()
         print(number1)
-        print(number2)
         print(op)
-
+        print(number2)
+        
         func = operators.get(op, None)
     
         if(number1 is None) or (number2 is None) or (func is None):
             print("Quitting.")
             break
+        elif(op == "lshift") or (op == "rshift"):
+            number1 = int(round(number1))
+            number2 = int(round(number2))
+            print(func(number1,number2))
         else:
             print(func(number1,number2))
     
