@@ -35,10 +35,15 @@ THE POSSIBILITY OF SUCH DAMAGE.
 --------------------------------
 
 This program will cause the USR3 LED on the PocketBeagle development
-board to blink at 5 hz indefinitely
+board to blink at 5 hz for 10 seconds
 
 There are no inputs to this function, upon execution it will simply 
 blink the LED
+
+This code requires the Adafruit_BBIO library to reference the pins
+on the board
+
+Time library is used for simplification of frequency modulation
 
 """
 # ------------------------------------------------------------------------
@@ -47,17 +52,17 @@ blink the LED
 import Adafruit_BBIO.GPIO as GPIO
 import time
 # ------------------------------------------------------------------------
-# Constants
+# Constants - N/A
 # ------------------------------------------------------------------------
 
 
 # ------------------------------4.5------------------------------------------
-# Global variables
+# Global variables - N/A
 # ------------------------------------------------------------------------
 
 
 # ------------------------------------------------------------------------
-# Functions
+# Functions 
 # ------------------------------------------------------------------------
 def main():
     GPIO.setup("USR3", GPIO.OUT)
