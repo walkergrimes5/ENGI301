@@ -59,17 +59,20 @@ import time
 # ------------------------------------------------------------------------
 # Functions
 # ------------------------------------------------------------------------
-
+def main():
+    GPIO.setup("USR3", GPIO.OUT)
     
+    for i in range(51):
+        GPIO.output("USR3", GPIO.HIGH)
+        time.sleep(1/10)
+        GPIO.output("USR3", GPIO.LOW)
+        time.sleep(1/10)
+
     
 # ------------------------------------------------------------------------
 # Main script
 # ------------------------------------------------------------------------
 if __name__ == "__main__":
-    GPIO.setup("USR3", GPIO.OUT)
+    main()
     
-    while True:
-        GPIO.output("USR3", GPIO.HIGH)
-        time.sleep(1/10)
-        GPIO.output("USR3", GPIO.LOW)
-        time.sleep(1/10)
+        
