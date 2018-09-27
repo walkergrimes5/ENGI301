@@ -68,8 +68,12 @@ import time
 if __name__ == "__main__":
     GPIO.setup("USR3", GPIO.OUT)
     
-    while True:
-        GPIO.output("USR3", GPIO.HIGH)
-        time.sleep(1/10)
-        GPIO.output("USR3", GPIO.LOW)
-        time.sleep(1/10)
+    for i in range(51):
+        while TRUE:
+            GPIO.output("USR3", GPIO.HIGH)
+            time.sleep(1/10)
+            GPIO.output("USR3", GPIO.LOW)
+            time.sleep(1/10)
+        if i == 50:
+            break
+        
