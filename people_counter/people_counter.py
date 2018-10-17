@@ -39,10 +39,14 @@ Requirements:
 
 """
 import time
+import sys
+
+sys.path.append("/var/lib/cloud9/ENGI301/i2c/")
 
 import Adafruit_BBIO.GPIO as GPIO
 
 import ht16k33_i2c as HT16K33
+
 
 
 # ------------------------------------------------------------------------
