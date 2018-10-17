@@ -62,9 +62,12 @@ def setup():
     """Setup the hardware components."""
     
     # Initialize Display
-
+    HT16K33.display_setup()
+    HT16K33.display_clear()
+    
     # Initialize Button
-
+    GPIO.setup(BUTTON0,GPIO.IN)
+    
 # End def
 
 
@@ -74,17 +77,25 @@ def task():
     button_press_time            = 0.0      # Time button was pressed (in seconds)
     
     while(1):
-
+        
         # Wait for button press
+        while(GPIO.input(BUTTON0)== 1):
+            pass
         
         # Record time
+        button_press_time = time.time()
         
         # Wait for button release
-        
+        while(GPIO.input(BUTTON0)==0):
+            pass
         # Compare time to increment or reset people_count
+        if(time.time()-button_press_time > RESET_TIME):
+            people_count = 0
+        else:
+            people_count += 1 # Increments the value of peoplecount by 1
         
         # Update the display
-        
+        HT16K33.update_display(people_count)
 # End def
 
 
